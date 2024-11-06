@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/dist/output.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <title>BookWorm</title>
+    <style>
+        .background {
+      background-image: url('images/fond.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 20px;
+    }
+        .custom-font {
+            font-family: 'Montserrat', sans-serif;
+          }
+    </style>
+    
+</head>
+<body class="bg text-gray-800 font-sans">
+
+    <!-- Navbar -->
+    <header class="flex justify-between items-center px-8 py-2 bg shadow-md">
+        <div class="flex items-center space-x-2"> <!-- Ajout d'un conteneur pour le logo et le texte -->
+            <a href="index.html"><img src="images/logo.png" alt="Logo" class="w-12 h-12"></a>
+            <h1 class="text-xl font-bold text-[#1F5132]">BookWorm</h1>
+        </div>
+        <div class="md:hidden">
+            <button id="mobile-menu-toggle" class="text-xl text-green-700">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+    
+        <nav id="menu" class="hidden md:flex justify-evenly flex-grow space-x-8">
+            <a href="index.html" class="text-xl hover:text-green-700 font-semibold">Home</a>
+            <a href="allbooks.html" class="text-xl hover:text-green-700 font-semibold">AllBooks</a>
+            <a href="mylibrary.html" class="text-xl hover:text-green-700 font-semibold">MyLibrary</a>
+            <a href="clubs.html" class="text-xl hover:text-green-700 font-semibold">Clubs</a>
+        </nav>
+        <button class="hidden md:block px-4 py-2 bg-[#1F5132] text-white rounded">
+            <a href="login.html"><i class="fas fa-user mr-2"></i>Login</a>
+        </button>
+    </header>
+     <!-- Menu Mobile -->
+  <div id="mobile-menu" class="md:hidden p-4 space-y-4 bg shadow-lg hidden">
+    <a href="index.html" class="block text-lg font-semibold text-gray-700">Home</a>
+    <a href="allbooks.html" class="block text-lg font-semibold text-gray-700">AllBooks</a>
+    <a href="mylibrary.html" class="block text-lg font-semibold text-gray-700">MyLibrary</a>
+    <a href="clubs.html" class="block text-lg font-semibold text-gray-700">Clubs</a>
+    <a href="login.html" class="block text-lg font-semibold text-gray-700">Login</a>
+  </div>
+    
+
+<!-- Carrousel Top 10 of the Month -->
+<section class="px-4 md:px-14 py-10 h-110 bg-green-100 text-center md:text-left relative overflow-hidden bg-gradient-to-r background">
+    <!-- Barre de recherche -->
+    <div class="flex justify-center mb-6">
+        <input 
+            type="text" 
+            placeholder="Search for books..." 
+            class="border border-gray-300 rounded-l-lg py-1 px-4 w-2/3 md:w-2/3"
+        >
+        <button class="bg-[#1F5132] text-white rounded-r-lg py-2 px-4 hover:bg-[#154026]">
+            <i class="fas fa-search"></i>
+        </button>
+    </div>
+
+    <h2 class="text-3xl font-bold text-black-800 mb-2 custom-font py-2">#Top 10 of the Month</h2>
+    
+    <div id="carousel-container" class="overflow-hidden relative w-full">
+        <div id="carousel" class="flex transition-transform duration-500 ease-in-out">
+            <!-- Slide 1 -->
+            <div class="min-w-full flex flex-col md:flex-row items-center mt-0 px-0 py-0">
+                <!-- Image en premier -->
+                <div class="md:w-1/3 w-full text-center px-4 md:px-16">
+                    <img src="images/throne_of.jpg" alt="Throne of Glass" class="w-40 h-auto mx-auto shadow-lg rounded-lg">
+                </div>
+                <div class="md:w-2/3 w-full text-center md:text-left px-4">
+                    <h3 class="text-2xl font-bold text-green-900 py-0">Throne Of Glass</h3>
+                    <!-- Rating -->
+                    <div class="flex justify-center md:justify-start items-center mb-2">
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                    </div>
+                    <p class="text-gray-700 text-lg mt-2">
+                        The story follows the journey of Celaena Sardothien, a teenage assassin in a corrupt kingdom with a tyrannical ruler, the King of Adarlan. As the tale progresses, Celaena forms unexpected bonds and uncovers a conspiracy amidst her adventures.
+                    </p>
+                    <div class="text-gray-600 mt-4 text-sm">
+                        <p><strong>Author:</strong> Sarah J. Maas</p>
+                        <p><strong>Publication Date:</strong> 2012</p>
+                        <p><strong>Reading Time:</strong> Approximately 10 hours</p>
+                        <p><strong>Badges:</strong> <span class="bg-yellow-200 text-yellow-800 px-2 py-0 rounded">Best-seller</span></p>
+                    </div>
+                    <div class="mt-4 space-x-4">
+                        <button class="px-4 py-2 bg-[#1F5132] hover:bg-[#154026] text-white rounded">Read Now!</button>
+                        <button class="px-4 py-2 bg border border-green-600 text-green-600 font-semibold rounded-md hover:bg-green-600 hover:text-white transition-colors duration-200">+ My Library</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="min-w-full flex flex-col md:flex-row items-center p-4 md:p-8">
+                <!-- Image en premier -->
+                <div class="md:w-1/3 w-full text-center px-4 md:px-16">
+                    <img src="images/court.png" alt="A Court of Thorns and Roses" class="w-40 h-auto mx-auto shadow-lg rounded-lg">
+                </div>
+                <div class="md:w-2/3 w-full text-center md:text-left px-4">
+                    <h3 class="text-2xl font-bold text-green-900">A Court of Thorns and Roses</h3>
+                    <div class="flex justify-center md:justify-start items-center mb-2">
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                    </div>
+                    <p class="text-gray-700 text-lg mt-2">
+                        The saga begins when Feyre Archeron, a 19-year-old huntress, is kidnapped and brought to the faerie lands of Prythian after she kills a faerie wolf. Her kidnapper is Tamlin, a High Fae and one of the seven High Lords of Prythian.
+                    </p>
+                    <div class="text-gray-600 mt-4 text-sm">
+                        <p><strong>Author:</strong> Sarah J. Maas</p>
+                        <p><strong>Publication Date:</strong> 2012</p>
+                        <p><strong>Reading Time:</strong> Approximately 10 hours</p>
+                        <p><strong>Badges:</strong> <span class="bg-yellow-200 text-yellow-800 px-2 py-0 rounded">Best-seller</span></p>
+                    </div>
+                    <div class="mt-4 space-x-4">
+                        <button class="px-4 py-2 bg-[#1F5132] hover:bg-[#154026] text-white rounded">Read Now!</button>
+                        <button class="px-4 py-2 bg border border-green-600 text-green-600 font-semibold rounded-md hover:bg-green-600 hover:text-white transition-colors duration-200">+ My Library</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Flèches de navigation -->
+    <button id="prev" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-[#1F5132] text-white p-2 rounded-full">&#8249;</button>
+    <button id="next" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-[#1F5132] text-white p-2 rounded-full">&#8250;</button>
+
+    <!-- Carousel Indicators -->
+    <div id="carousel-indicators" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+        <span class="dot w-3 h-3 bg-gray-400 rounded-full cursor-pointer" data-slide="0"></span>
+        <span class="dot w-3 h-3 bg-gray-400 rounded-full cursor-pointer" data-slide="1"></span>
+    </div>
+</section>
+
+    <!-- Most Popular & Most High Rated -->
+    <section class="px-4 py-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Most Popular -->
+        <div>
+            <h2 class="text-xl font-bold text-green-800 ">Most Popular</h2>
+            <div class="mt-4 space-y-4">
+                <div class="flex items-center bg shadow-md p-4 rounded-lg hover:shadow-lg transition-shadow">
+                    <img src="images/change_by_design.png" alt="Change By Design" class="w-16 h-22 mr-4 hover:shadow-xl">
+                    <div>
+                        <h3 class="text-lg font-medium text-gray-800">Change By Design</h3>
+        <p class="text-green-700 text-sm ">Tim Brown</p>
+        <p class="text-green-800 text-base font-semibold mb-1">Psychology</p>
+        <!-- Rating -->
+        <div class="flex items-center space-x-1 mt-2">
+            <i class="fas fa-star text-yellow-500"></i> <!-- Étoile pleine -->
+            <i class="fas fa-star text-yellow-500"></i>
+            <i class="fas fa-star text-yellow-500"></i> 
+            <i class="fas fa-star text-yellow-500"></i> 
+            <i class="far fa-star text-yellow-500"></i> <!-- Étoile vide -->
+        </div>
+                        
+                        <div class="mt-2">
+                            <button class="px-2 py-1 text-sm bg-[#1F5132] text-white rounded">Read Now!</button>
+                            <button class="px-2 py-1 ml-4 text-sm bg-[#1F5132] text-white rounded">+ My Library</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center bg shadow-md p-4 rounded-lg hover:shadow-lg transition-shadow">
+                    <img src="images/happiness.jpg" alt="Happiness By Design" class="w-16 h-22 mr-4 hover:shadow-xl">
+                    <div>
+                        <h3 class="font-semibold">Happiness by design</h3>
+                        <p class="text-green-700 text-sm ">Paul Dolan</p>
+        <p class="text-green-800 text-base font-semibold mb-1">Psychology</p>
+                        <div class="flex items-center space-x-1 mt-2">
+                            <i class="fas fa-star text-yellow-500"></i> <!-- Étoile pleine -->
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="far fa-star text-yellow-500"></i> 
+                            <i class="far fa-star text-yellow-500"></i> 
+                            <i class="far fa-star text-yellow-500"></i> <!-- Étoile vide -->
+                        </div>
+                        <div class="mt-2">
+                            <button class="px-2 py-1 text-sm bg-[#1F5132] text-white rounded">Read Now!</button>
+                            <button class="px-2 py-1 ml-4 text-sm bg-[#1F5132] text-white rounded">+ My Library</button>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="text-center mt-8"> 
+                    <a href="allbooks.html"><button class="px-4 py-2  bg border border-green-600 text-green-600 font-semibold rounded-md hover:bg-green-600 hover:text-white transition-colors duration-200">View More</button></a>
+                </div>
+                <!-- Add other books similarly -->
+            </div>
+        </div>
+
+        <!-- Most High Rated -->
+        <div>
+            <h2 class="text-xl font-bold text-green-800 ">Most High Rated</h2>
+            <div class="mt-4 space-y-4">
+                <div class="flex items-center bg shadow-md p-4 rounded-lg hover:shadow-lg transition-shadow">
+                    <img src="images/housemaid.png" alt="the housemaid" class="w-16 h-22 mr-4 hover:shadow-xl">
+                    <div>
+                        <h3 class="font-semibold">The Housemaid</h3>
+                        <p class="text-green-700 text-sm ">Freida Macfedden</p>
+        <p class="text-green-800 text-base font-semibold mb-1">Thriller</p>
+                        <div class="flex items-center space-x-1 mt-2">
+                            <i class="fas fa-star text-yellow-500"></i> <!-- Étoile pleine -->
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="far fa-star text-yellow-500"></i> <!-- Étoile vide -->
+                        </div>
+                        <div class="mt-2">
+                            <button class="px-2 py-1 text-sm bg-[#1F5132] text-white rounded">Read Now!</button>
+                            <button class="px-2 py-1 ml-4 text-sm bg-[#1F5132] text-white rounded">+ My Library</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center bg shadow-md p-4 rounded-lg hover:shadow-lg transition-shadow">
+                    <img src="images/chami.png" alt="The Lady Beauty" class="w-16 h-22 mr-4 hover:shadow-xl">
+                    <div>
+                        <h3 class="font-semibold">Casablanca circus</h3>
+                        <p class="text-green-700 text-sm ">Yasmine Chami</p>
+        <p class="text-green-800 text-base font-semibold mb-1">Fiction</p>
+                        <div class="flex items-center space-x-1 mt-2">
+                            <i class="fas fa-star text-yellow-500"></i> <!-- Étoile pleine -->
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="far fa-star text-yellow-500"></i> 
+                            <i class="far fa-star text-yellow-500"></i> <!-- Étoile vide -->
+                        </div>
+                        <div class="mt-2">
+                            <button class="px-2 py-1 text-sm bg-[#1F5132] text-white rounded">Read Now!</button>
+                            <button class="px-2 py-1 ml-4 text-sm bg-[#1F5132] text-white rounded">+ My Library</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add other books similarly -->
+            </div>
+            <div class="text-center mt-8"> 
+                <a href="allbooks.html"><button class="px-4 py-2  bg border border-green-600 text-green-600 font-semibold rounded-md hover:bg-green-600 hover:text-white transition-colors duration-200">View More</button></a>
+                </div>
+        </div>
+        
+    </section>
+           
+    <!-- Categories Section -->
+<!-- Categories Section -->
+<section class="px-4 py-8 bg text-center">
+    <h2 class="text-2xl font-bold text-green-800 mb-6 py-4">Explore our Top Categories</h2>
+    
+    <div class="flex justify-center space-x-4 items-center">
+        <!-- Left Navigation Arrow -->
+        <button class="p-2 rounded-full bg-green-700 text-white hover:bg-green-800 transition-colors">
+            <span>&#8592;</span>
+        </button>
+        
+        <!-- Categories Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl py-4">
+            <!-- Category 1 -->
+            <div class="bg rounded-lg shadow-md overflow-hidden">
+                <img src="images/psycho.jpg" alt="Psychology" class="w-full h-48 object-cover">
+                <div class="py-4">
+                    <p class="text-lg font-semibold">Psychology</p>
+                </div>
+            </div>
+            
+            <!-- Category 2 -->
+            <div class="bg rounded-lg shadow-md overflow-hidden">
+                <img src="images/fantasy.png" alt="Architecture" class="w-full h-48 object-cover">
+                <div class="py-4">
+                    <p class="text-lg font-semibold">Fantasy</p>
+                </div>
+            </div>
+            
+            <!-- Category 3 -->
+            <div class="bg rounded-lg shadow-md overflow-hidden">
+                <img src="images/thriller.jpg" alt="Science" class="w-full h-48 object-cover">
+                <div class="py-4">
+                    <p class="text-lg font-semibold ">Thriller & Suspense</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Navigation Arrow -->
+        <button class="p-2 rounded-full bg-green-700 text-white hover:bg-green-800 transition-colors">
+            <span>&#8594;</span>
+        </button>
+    </div>
+    
+    <!-- View More Button -->
+    <div class="text-center mt-8">
+        <button class="px-8 py-3 bg-green-700 hover:bg-green-800 text-white font-semibold rounded-md hover:text-white transition-colors duration-200">
+          View More →
+        </button>
+      </div>
+</section>
+
+
+     
+
+   
+    
+    <!-- Section des Clubs de Livres -->
+<section class="bg py-8">
+    <div class="container mx-auto">
+        <h2 class="text-2xl font-bold text-green-900 mb-4 text-center">Join Our Book Clubs</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <div class="bg shadow-lg rounded-lg p-6 transition-transform duration-200 transform hover:scale-105">
+                <div class="flex items-center mb-4">
+                    <img src="images/club1.jpeg" alt="Mystery Lovers Club" class="w-16 h-16 rounded-full shadow-lg mr-4">
+                    <h3 class="font-semibold text-lg text-green-900">Mystery Lovers Club</h3>
+                </div>
+                <p class="text-gray-600">Dive into thrilling mysteries every month.</p>
+                <div class="mt-4 flex justify-center">
+                    <button class="px-4 py-2 bg-green-700 hover:bg-green-800 text-white rounded-lg shadow-md transition-transform transform hover:scale-105">Join Now</button>
+                </div>
+            </div>
+            <div class="bg shadow-lg rounded-lg p-6 transition-transform duration-200 transform hover:scale-105">
+                <div class="flex items-center mb-4">
+                    <img src="images/club2.jpg" alt="Sci-Fi Enthusiasts" class="w-16 h-16 rounded-full shadow-lg mr-4">
+                    <h3 class="font-semibold text-lg text-green-900">Sci-Fi Enthusiasts</h3>
+                </div>
+                <p class="text-gray-600">Explore futuristic worlds and ideas.</p>
+                <div class="mt-4 flex justify-center">
+                    <button class="px-4 py-2 bg-green-700 hover:bg-green-800 text-white rounded-lg shadow-md transition-transform transform hover:scale-105">Join Now</button>
+                </div>
+            </div>
+            <div class="bg shadow-lg rounded-lg p-6 transition-transform duration-200 transform hover:scale-105">
+                <div class="flex items-center mb-4">
+                    <img src="images/club3.jpg" alt="Romantic Reads" class="w-16 h-16 rounded-full shadow-lg mr-4">
+                    <h3 class="font-semibold text-lg text-green-900">Romantic Reads</h3>
+                </div>
+                <p class="text-gray-600">Join us for heartwarming stories.</p>
+                <div class="mt-4 flex justify-center">
+                    <button class="px-4 py-2 bg-green-700 hover:bg-green-800 text-white rounded-lg shadow-md transition-transform transform hover:scale-105">Join Now</button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- View More Button -->
+    <div class="text-center mt-8">
+        <a href="clubs.html"><button class="px-8 py-3 bg-green-700 hover:bg-green-800 text-white font-semibold rounded-md hover:text-white transition-colors duration-200">
+          View More →
+        </button></a>
+      </div>
+</section>
+<!-- Footer Section -->
+<footer class="bg-green-800 text-white py-10">
+    <div class="container mx-auto px-4">
+        <!-- Footer content arranged in a grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+            
+            <!-- Get in Touch Section -->
+            <div>
+                <h2 class="font-semibold text-lg mb-4">Get In Touch</h2>
+                <p class="mb-4">Follow us via social media</p>
+                <div class="flex justify-center md:justify-start space-x-4">
+                    <!-- Social Media Icons -->
+                    <a href="#" class="hover:text-gray-300">
+                        <i class="fab fa-facebook-f text-xl"></i>
+                    </a>
+                    <a href="#" class="hover:text-gray-300">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="#" class="hover:text-gray-300">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Contact and Policies Section -->
+            <div>
+                <h2 class="font-semibold text-lg mb-4">Contact</h2>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-gray-300">Contact</a></li>
+                    <li><a href="#" class="hover:text-gray-300">Terms of Use</a></li>
+                    <li><a href="#" class="hover:text-gray-300">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-gray-300">FAQ</a></li>
+                </ul>
+            </div>
+
+            <!-- Website Info Section -->
+            <div>
+                <h2 class="font-semibold text-lg mb-4">Website Info</h2>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-gray-300">Home</a></li>
+                    <li><a href="#" class="hover:text-gray-300">All Books</a></li>
+                    <li><a href="#" class="hover:text-gray-300">Library</a></li>
+                    <li><a href="#" class="hover:text-gray-300">Clubs</a></li>
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+</footer>
+</body>
+<!--javascript pour le carrousel -->
+<script>
+    const carousel = document.getElementById('carousel');
+const nextButton = document.getElementById('next');
+const prevButton = document.getElementById('prev');
+const dots = document.querySelectorAll('.dot');
+let currentSlide = 0;
+
+function updateCarousel() {
+    carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+    dots.forEach((dot, index) => {
+        dot.classList.toggle('bg-gray-400', index !== currentSlide);
+        dot.classList.toggle('bg-green-700', index === currentSlide);
+    });
+}
+
+nextButton.addEventListener('click', () => {
+    currentSlide = (currentSlide + 1) % dots.length;
+    updateCarousel();
+});
+
+prevButton.addEventListener('click', () => {
+    currentSlide = (currentSlide - 1 + dots.length) % dots.length;
+    updateCarousel();
+});
+
+dots.forEach((dot) => {
+    dot.addEventListener('click', () => {
+        currentSlide = parseInt(dot.getAttribute('data-slide'));
+        updateCarousel();
+    });
+});
+
+// Initial setup
+updateCarousel();
+const menuToggle = document.getElementById('menu-toggle');
+const menu = document.getElementById('menu');
+
+menuToggle.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+});
+
+</script>
+<!-- JavaScript for mobile menu toggle -->
+<script>
+    document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.toggle('hidden');
+    });
+</script>
+</html>

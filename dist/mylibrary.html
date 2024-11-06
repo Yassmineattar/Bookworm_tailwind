@@ -1,0 +1,432 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Library</title>
+    <link href="/dist/output.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .book-card {
+            width: 150px;
+            padding: 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+        }
+        
+        .book-cover {
+            width: 100px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 8px;
+        }
+
+        .book-title {
+            font-size: 0.9rem;
+            text-align: center;
+            margin-bottom: 8px;
+            line-height: 1.2;
+            min-height: 32px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background-color: #e5e7eb;
+            margin-bottom: 8px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #1F5132;
+            border-radius: 4px;
+        }
+
+        .action-button {
+            background-color: #266940;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            text-align: center;
+            width: 100%;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 960px;
+            margin: 0 auto;
+            overflow: hidden;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .carousel-wrapper {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%; /* Ajuste la largeur du wrapper */
+}
+
+        
+        .book-container {
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+    justify-content: space-around;
+    width: 100%; /* Chaque slide occupe 100% de la largeur du carousel */
+    flex-shrink: 0;
+        }
+        
+        
+        
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #166534;
+            color: white;
+            border: none;
+            padding: 12px;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            z-index: 10;
+        }
+
+        .carousel-button.left {
+            left: 10px;
+        }
+
+        .carousel-button.right {
+            right: 10px;
+        }
+    </style>
+</head>
+<body class="bg font-sans overflow-x-hidden">
+
+    <!-- Header -->
+    <header class="flex justify-between items-center px-8 py-2 bg fixed w-full z-50 bg shadow-md bg">
+        <div class="flex items-center space-x-2">
+            <a href="index.html"><img src="images/logo.png" alt="Logo" class="w-12 h-12"></a>
+            <h1 class="text-xl font-bold text-[#1F5132]">BookWorm</h1>
+        </div>
+
+        <!-- Navigation Links for Desktop -->
+        <nav id="menu" class="hidden md:flex justify-evenly flex-grow space-x-8">
+            <a href="index.html" class="text-xl hover:text-green-700 font-semibold">Home</a>
+            <a href="allbooks.html" class="text-xl hover:text-green-700 font-semibold">AllBooks</a>
+            <a href="mylibrary.html" class="text-xl hover:text-green-700 font-semibold">MyLibrary</a>
+            <a href="clubs.html" class="text-xl hover:text-green-700 font-semibold">Clubs</a>
+        </nav>
+
+        <!-- Icons (Notification & Profile) for Desktop -->
+        <div id="iconContainer" class="hidden md:flex space-x-4">
+            <button id="profileIcon" class="fas fa-user text-2xl text-green-800"></button>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 right-0 h-full w-64 bg shadow-lg pt-20 p-4 transform translate-x-full transition-transform z-40">
+        <div class="flex flex-col items-center mb-6">
+            <img src="images/profile.png" alt="User Avatar" class="w-20 h-20 rounded-full">
+            <h3 class="text-lg font-semibold mt-2">Identifiant</h3>
+            <p class="text-sm text-gray-500">identifiant@gmail.com</p>
+        </div>
+        <nav>
+            <h4 class="font-semibold text-gray-800 mb-2">All Books</h4>
+            <ul class="space-y-2">
+                <li><a href="#" class="text-green-800 hover:text-green-600 flex items-center"><i class="fas fa-book mr-2"></i> Home</a></li>
+                <li><a href="#" class="text-green-800 hover:text-green-600 flex items-center"><i class="fas fa-search mr-2"></i> Search</a></li>
+                <li><a href="#" class="text-green-800 hover:text-green-600 flex items-center"><i class="fas fa-bell mr-2"></i> Notifications</a></li>
+            </ul>
+
+            <h4 class="font-semibold text-gray-800 mt-6 mb-2">MyLibrary</h4>
+            <ul class="space-y-2">
+                <li><a href="#" class="text-green-800 hover:text-green-600 flex items-center"><i class="fas fa-bookmark mr-2"></i> Currently reading</a></li>
+                <li><a href="#" class="text-green-800 hover:text-green-600 flex items-center"><i class="fas fa-list mr-2"></i> On my TBR</a></li>
+                <li><a href="#" class="text-green-800 hover:text-green-600 flex items-center"><i class="fas fa-check mr-2"></i> Finished</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="pt-20 md:pt-24 p-6 overflow-x-hidden transition-all">
+        <!-- Carousel Section: Currently Reading -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-green-800 mb-4 text-center">Currently reading!</h2>
+            <div class="carousel-container">
+                <button class="carousel-button left" onclick="slideCarousel(-1)">&#10094;</button>
+                <div id="carouselWrapper" class="carousel-wrapper">
+                    <!-- Slide 1 with 6 books -->
+                    <div class="book-container-wrapper px-16">
+                        <div class="book-container">
+                            <!-- Book cards -->
+                            <div class="book-card">
+                                <img src="images/book1.png" alt="Book 1" class="book-cover">
+                                <p class="book-title">A court of mist and fury</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 50%;"></div>
+                                </div>
+                                <button class="action-button">Continue</button>
+                            </div>
+                            <div class="book-card">
+                                <img src="images/change_by_design.png" alt="Book 2" class="book-cover">
+                                <p class="book-title">Change By Design</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 20%;"></div>
+                                </div>
+                                <button class="action-button">Continue</button>
+                            </div>
+                            <div class="book-card">
+                                <img src="images/book3.png" alt="Book 2" class="book-cover">
+                                <p class="book-title">The Memoirs of Cleopatra</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 80%;"></div>
+                                </div>
+                                <button class="action-button">Continue</button>
+                            </div>
+                            <div class="book-card">
+                                <img src="images/housemaid.png" alt="Book 2" class="book-cover">
+                                <p class="book-title">The Housemaid</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 50%;"></div>
+                                </div>
+                                <button class="action-button">Continue</button>
+                            </div>
+                            <div class="book-card">
+                                <img src="images/react.png" alt="Book 2" class="book-cover">
+                                <p class="book-title">The Road To React</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 15%;"></div>
+                                </div>
+                                <button class="action-button">Continue</button>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <!-- Slide 2  -->
+                    <div class="book-container">
+                        <div class="book-card">
+                            <img src="images/happiness.jpg" alt="Book 7" class="book-cover">
+                            <p class="book-title">Happiness By Design</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 40%;"></div>
+                            </div>
+                            <button class="action-button">Continue</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-button right" onclick="slideCarousel(1)">&#10095;</button>
+            </div>
+        </section>
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-green-800 mb-4 text-center">To Read!</h2>
+            <div class="carousel-container">
+                <button class="carousel-button left" onclick="slideToReadCarousel(-1)">&#10094;</button>
+                <div id="toReadCarouselWrapper" class="carousel-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="book-container">
+                        <div class="book-card">
+                            <img src="images/thinkingfas.png" alt="Book 4" class="book-cover">
+                            <p class="book-title">Thinking Fast & Slow</p>
+                            <button class="action-button">Read</button>
+                        </div>
+                        <div class="book-card">
+                            <img src="images/designofet.png" alt="Book 4" class="book-cover">
+                            <p class="book-title">Design Of Everyday Things</p>
+                            <button class="action-button">Read</button>
+                        </div>
+                        <div class="book-card">
+                            <img src="images/harypotter.png" alt="Book 4" class="book-cover">
+                            <p class="book-title">The Chamber Of Secrets</p>
+                            <button class="action-button">Read</button>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="book-container">
+                        <div class="book-card">
+                            <img src="images/dontmakemethink.png" alt="Book 4" class="book-cover">
+                            <p class="book-title">Don't Make Me Think</p>
+                            <button class="action-button">Read</button>
+                        </div>
+                        <div class="book-card">
+                            <img src="images/throne_of.jpg" alt="Book 4" class="book-cover">
+                            <p class="book-title">Throne Of Glass</p>
+                            <button class="action-button">Read</button>
+                        </div>
+                        <div class="book-card">
+                            <img src="images/verity.png" alt="Book 4" class="book-cover">
+                            <p class="book-title">The Chamber Of Secrets</p>
+                            <button class="action-button">Read</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-button right" onclick="slideToReadCarousel(1)">&#10095;</button>
+            </div>
+        </section>
+        
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-green-800 mb-4 text-center">Finished!</h2>
+            <div class="carousel-container">
+                <button class="carousel-button left" onclick="slideFinishedCarousel(-1)">&#10094;</button>
+                <div id="finishedCarouselWrapper" class="carousel-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="book-container">
+                        <div class="book-card">
+                            <img src="images/song.png" alt="Book 5" class="book-cover">
+                            <p class="book-title">The Song Of Achiles</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%;"></div>
+                            </div>
+                            <button class="action-button">Finished</button>
+                        </div>
+                        <div class="book-card">
+                            <img src="images/ends.png" alt="Book 5" class="book-cover">
+                            <p class="book-title">It Ends With Us</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%;"></div>
+                            </div>
+                            <button class="action-button">Finished</button>
+                        </div>
+                        <div class="book-card">
+                            <img src="images/powerless.png" alt="Book 5" class="book-cover">
+                            <p class="book-title">Powerless</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%;"></div>
+                            </div>
+                            <button class="action-button">Finished</button>
+                        </div>
+                        <div class="book-card">
+                            <img src="images/court.png" alt="Book 5" class="book-cover">
+                            <p class="book-title">Powerless</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%;"></div>
+                            </div>
+                            <button class="action-button">Finished</button>
+                        </div>
+                        <div class="book-card">
+                            <img src="images/poppy.png" alt="Book 5" class="book-cover">
+                            <p class="book-title">Poppy War</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%;"></div>
+                            </div>
+                            <button class="action-button">Finished</button>
+                        </div>
+                        
+                        <!-- Ajoutez d'autres livres ici pour remplir le slide -->
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="book-container">
+                        <!-- Ajoutez d'autres livres pour le Slide 2 -->
+                    </div>
+                </div>
+                <button class="carousel-button right" onclick="slideFinishedCarousel(1)">&#10095;</button>
+            </div>
+        </section>
+        
+        
+                
+    </main>
+
+    <!-- Footer Section -->
+<footer class="bg-green-800 text-white py-10">
+    <div class="container mx-auto px-4">
+        <!-- Footer content arranged in a grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+            
+            <!-- Get in Touch Section -->
+            <div>
+                <h2 class="font-semibold text-lg mb-4">Get In Touch</h2>
+                <p class="mb-4">Follow us via social media</p>
+                <div class="flex justify-center md:justify-start space-x-4">
+                    <!-- Social Media Icons -->
+                    <a href="#" class="hover:text-gray-300">
+                        <i class="fab fa-facebook-f text-xl"></i>
+                    </a>
+                    <a href="#" class="hover:text-gray-300">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="#" class="hover:text-gray-300">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Contact and Policies Section -->
+            <div>
+                <h2 class="font-semibold text-lg mb-4">Contact</h2>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-gray-300">Contact</a></li>
+                    <li><a href="#" class="hover:text-gray-300">Terms of Use</a></li>
+                    <li><a href="#" class="hover:text-gray-300">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-gray-300">FAQ</a></li>
+                </ul>
+            </div>
+
+            <!-- Website Info Section -->
+            <div>
+                <h2 class="font-semibold text-lg mb-4">Website Info</h2>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-gray-300">Home</a></li>
+                    <li><a href="#" class="hover:text-gray-300">All Books</a></li>
+                    <li><a href="#" class="hover:text-gray-300">Library</a></li>
+                    <li><a href="#" class="hover:text-gray-300">Clubs</a></li>
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+</footer>
+
+    <script>
+        // Toggle sidebar visibility
+        document.getElementById("profileIcon").addEventListener("click", function() {
+            const sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("translate-x-full");
+        });
+    
+        // Carousel functionality
+        let currentSlide = 0;
+    
+        function slideCarousel(direction) {
+    const carouselWrapper = document.getElementById("carouselWrapper");
+    const slides = carouselWrapper.children;
+    const totalSlides = slides.length;
+
+    currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+    carouselWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+}
+
+    
+        let currentToReadSlide = 0;
+        let currentFinishedSlide = 0;
+    
+        function slideToReadCarousel(direction) {
+            const toReadCarouselWrapper = document.getElementById("toReadCarouselWrapper");
+            const slides = toReadCarouselWrapper.children;
+            const totalSlides = slides.length;
+    
+            currentToReadSlide = (currentToReadSlide + direction + totalSlides) % totalSlides;
+            toReadCarouselWrapper.style.transform = `translateX(-${currentToReadSlide * 100}%)`;
+        }
+    
+        function slideFinishedCarousel(direction) {
+            const finishedCarouselWrapper = document.getElementById("finishedCarouselWrapper");
+            const slides = finishedCarouselWrapper.children;
+            const totalSlides = slides.length;
+    
+            currentFinishedSlide = (currentFinishedSlide + direction + totalSlides) % totalSlides;
+            finishedCarouselWrapper.style.transform = `translateX(-${currentFinishedSlide * 100}%)`;
+        }
+    </script>
+    
+</body>
+</html>

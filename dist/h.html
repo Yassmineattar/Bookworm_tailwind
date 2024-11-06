@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Detail</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .background {
+      background-image: url('images/fond.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 20px;
+    }
+    /* Style personnalisé pour masquer les scrollbar sur certains navigateurs */
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <!-- Navbar (omise pour simplicité) -->
+
+  <!-- Reviews Section -->
+  <div class="p-6 mt-4 lg:max-w-4xl lg:mx-auto bg-white rounded-lg shadow-md">
+    <h3 class="text-xl font-semibold mb-4">Reviews:</h3>
+    <div id="carousel" class="flex items-center space-x-4 overflow-hidden">
+      <!-- Review 1 -->
+      <div class="bg-gray-100 p-4 rounded-lg shadow-sm w-80 flex-shrink-0">
+        <p class="font-semibold">John D.</p>
+        <p class="text-xs text-gray-500">Company CEO</p>
+        <p class="mt-2 text-yellow-500">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+        <p class="mt-2 text-gray-700">An insightful book, although a bit verbose at times.</p>
+        <div class="flex space-x-3 mt-3">
+          <button class="flex items-center text-gray-500 hover:text-green-700">
+            <i class="fas fa-thumbs-up mr-1"></i> Like
+          </button>
+          <button class="flex items-center text-gray-500 hover:text-red-600">
+            <i class="fas fa-thumbs-down mr-1"></i> Dislike
+          </button>
+          <button class="flex items-center text-gray-500 hover:text-blue-500">
+            <i class="fas fa-comment mr-1"></i> Comment
+          </button>
+        </div>
+      </div>
+      
+      <!-- Review 2 -->
+      <div class="bg-gray-100 p-4 rounded-lg shadow-sm w-80 flex-shrink-0">
+        <p class="font-semibold">Katie</p>
+        <p class="text-xs text-gray-500">Software Engineer</p>
+        <p class="mt-2 text-yellow-500">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+        <p class="mt-2 text-gray-700">A refreshing take on design, though some parts were repetitive.</p>
+        <div class="flex space-x-3 mt-3">
+          <button class="flex items-center text-gray-500 hover:text-green-700">
+            <i class="fas fa-thumbs-up mr-1"></i> Like
+          </button>
+          <button class="flex items-center text-gray-500 hover:text-red-600">
+            <i class="fas fa-thumbs-down mr-1"></i> Dislike
+          </button>
+          <button class="flex items-center text-gray-500 hover:text-blue-500">
+            <i class="fas fa-comment mr-1"></i> Comment
+          </button>
+        </div>
+      </div>
+
+      <!-- More reviews can be added here with the same structure -->
+    </div>
+
+    <!-- Pagination Controls -->
+    <div class="flex items-center justify-center space-x-2 mt-4">
+      <button id="prev" class="text-gray-500">&larr;</button>
+      <button id="next" class="text-gray-500">&rarr;</button>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript pour le carousel
+    const carousel = document.getElementById('carousel');
+    const reviews = carousel.children;
+    const nextButton = document.getElementById('next');
+    const prevButton = document.getElementById('prev');
+    let currentIndex = 0;
+    const totalReviews = reviews.length;
+
+    function showReview(index) {
+      for (let i = 0; i < totalReviews; i++) {
+        reviews[i].style.display = 'none';
+      }
+      reviews[index].style.display = 'block';
+    }
+
+    // Afficher la première review initialement
+    showReview(currentIndex);
+
+    // Bouton Suivant
+    nextButton.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % totalReviews;
+      showReview(currentIndex);
+    });
+
+    // Bouton Précédent
+    prevButton.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + totalReviews) % totalReviews;
+      showReview(currentIndex);
+    });
+  </script>
+</body>
+</html>

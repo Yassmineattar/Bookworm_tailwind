@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <link href="/dist/output.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg flex items-center justify-center min-h-screen">
+  <div class="flex flex-col md:flex-row w-full max-w-4xl rounded-lg overflow-hidden ">
+
+    <!-- Section de connexion -->
+    <div class="w-full md:w-1/2 p-8 flex flex-col justify-center bg">
+      <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center md:text-left">Create a New Account!</h1>
+      
+      <form>
+        <div class="mb-4">
+          <label for="name" class="block text-gray-700 ">Full Name</label>
+          <input type="name" id="name" placeholder="Enter your full name" class="mt-2 px-4 py-2 border rounded-lg w-full focus:outline-none focus:ring-1 focus:ring-green-700">
+        </div>
+
+        <div class="mb-4">
+          <label for="email" class="block text-gray-700">Email</label>
+          <input type="email" id="email" placeholder="email@gmail.com" class="mt-2 px-4 py-2 border rounded-lg w-full focus:outline-none focus:ring-1 focus:ring-green-700">
+        </div>
+        
+        <div class="mb-4">
+          <label for="password" class="block text-gray-700">Password</label>
+          <input type="password" id="password" placeholder="Enter your password" class="mt-2 px-4 py-2 border rounded-lg w-full focus:outline-none mb-2 focus:ring-1 focus:ring-green-700">
+        </div>
+        
+        <button type="submit" class="bg-green-20 text-white py-2 px-4 rounded-lg w-full hover:bg-green-800 transition duration-300">Sign Up</button>
+      </form>
+      
+      <div class="my-6 text-gray-500 text-center">- or -</div>
+      
+      <div class="flex justify-center space-x-4">
+        <button class="bg-gray-200 p-3 rounded-full hover:bg-gray-300">
+          <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google" class="w-6 h-6">
+        </button>
+        <button class="bg-gray-200 p-3 rounded-full hover:bg-gray-300">
+          <img src="https://img.icons8.com/color/48/000000/facebook.png" alt="Facebook" class="w-6 h-6">
+        </button>
+        <button class="bg-gray-200 p-3 rounded-full hover:bg-gray-300">
+          <img src="https://img.icons8.com/ios-filled/50/000000/mac-os.png" alt="Apple" class="w-6 h-6">
+        </button>
+      </div>
+      
+      <div class="mt-6 text-center">
+        <p class="text-gray-500">Already have an account? <a href="login.html" class="text-green-700 hover:underline">Sign in</a></p>
+      </div>
+    </div>
+
+    <!-- Section illustration -->
+    <div class="hidden md:flex w-full md:w-1/2 bg-[#6B8F71] items-center justify-center">
+      <div class="w-80 h-90 bg-green-20 rounded-t-full flex items-center justify-center ml-40 overflow-hidden">
+        <img src="images/image-removebg-preview.png" alt="Silhouette d'une personne lisant sur une pile de livres" class="h-85 object-contain">
+      </div>
+    </div>
+  </div>
+</body>
+</html>

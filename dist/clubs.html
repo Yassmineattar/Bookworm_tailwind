@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookworm</title>
+    <link href="/dist/output.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js" crossorigin="anonymous"></script>
+    <style>
+        .police{
+            font-family: 'Abhaya Libre', serif;
+          }
+    </style>
+</head>
+<body class="bg font-sans">
+
+    <!-- Navbar -->
+    
+    <header class="flex justify-between items-center px-8 py-2 bg shadow-md">
+        <div class="flex items-center space-x-2">
+            <a href="index.html"><img src="images/logo.png" alt="Logo" class="w-12 h-12"></a>
+            <h1 class="text-xl font-bold text-[#1F5132]">BookWorm</h1>
+        </div>
+        
+        <!-- Hamburger Menu for Mobile -->
+        <div class="md:hidden flex justify-end flex-grow">
+            <button id="mobile-menu-toggle" class="text-2xl text-green-700">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- Navigation Links for Desktop -->
+        <nav id="menu" class="hidden md:flex justify-evenly flex-grow space-x-8">
+            <a href="index.html" class="text-xl hover:text-green-700 font-semibold">Home</a>
+            <a href="allbooks.html" class="text-xl hover:text-green-700 font-semibold">AllBooks</a>
+            <a href="mylibrary.html" class="text-xl hover:text-green-700 font-semibold">MyLibrary</a>
+            <a href="clubs.html" class="text-xl hover:text-green-700 font-semibold">Clubs</a>
+        </nav>
+        
+        <!-- Icons (Notification & Profile) for Desktop -->
+        <div id="iconContainer" class="hidden md:flex space-x-4">
+            <button id="profileIcon" class="fas fa-user text-2xl text-green-800"></button>
+        </div>
+    </header>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="p-4 space-y-4 bg shadow-lg hidden text-center">
+        <a href="index.html" class="block text-lg font-semibold text-gray-700">Home</a>
+        <a href="allbooks.html" class="block text-lg font-semibold text-gray-700">AllBooks</a>
+        <a href="mylibrary.html" class="block text-lg font-semibold text-gray-700">MyLibrary</a>
+        <a href="Clubs.html" class="block text-lg font-semibold text-gray-700">Clubs</a>
+        <i class="fas fa-user" style="color: #517b6c;"></i>
+    </div>
+
+    <!-- Main Layout -->
+    <div class="container mx-auto flex flex-col md:flex-row mt-6 px-2 md:px-1 space-y-6 md:space-y-0 md:space-x-6">
+        
+        <!-- Most Followed Section -->
+        <aside class="bg-green-800 text-white p-6  rounded-lg w-full md:w-1/3 lg:w-1/4 mx-auto md:ml-0 relative overflow-hidden shadow-lg">
+            <h2 class="text-xl md:text-2xl font-semibold mb-4 md:mb-6 text-center">MOST FOLLOWED</h2>
+            
+            <!-- Slider Container -->
+            <div id="slider" class="relative flex transition-transform duration-500 ease-in-out police justify-normal"></div>
+        
+            <!-- Slider Controls -->
+            <button id="prev" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-green-900 text-white p-2 rounded-full focus:outline-none">
+                <i class="fas fa-chevron-left"><</i>
+            </button>
+            <button id="next" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-green-900 text-white p-2 rounded-full focus:outline-none">
+                <i class="fas fa-chevron-right">></i>
+            </button>
+        </aside>
+
+    
+
+
+        <!-- Main Content Section -->
+        <main class="flex-1 space-y-6">
+            <!-- Title -->
+            <h1 class="text-3xl font-bold text-center text-green-800">Join a Reading Club Today!</h1>
+
+            <!-- Search Bar and Create Club Button Row -->
+            <div class="flex items-center justify-center space-x-4 mt-4">
+                <!-- Search Bar -->
+                <div class="relative flex-grow max-w-lg">
+                    <i class="fas fa-search absolute left-3 top-3 text-gray-500"></i>
+                    <input type="text" placeholder="Search for a club" 
+                        class="w-full pl-10 pr-4 py-2 border border-gray-400 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500">
+                </div>
+    
+                <!-- Create Club Button -->
+                <button class="bg-[#1F5132] text-white font-semibold py-2 px-4 rounded-full flex items-center justify-center hover:bg-green-900">
+                    <i class="fas fa-plus bg-green-900 font-semibold py-2 px-4 rounded-full">+</i>
+                </button>
+            </div>
+
+            <!-- Club Cards Section -->
+            <section id="clubList" class="space-y-4">
+                
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="bg-green-800 text-white py-6 mt-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                
+                <!-- Get in Touch Section -->
+                <div>
+                    <h2 class="font-semibold text-lg mb-4">Get In Touch</h2>
+                    <p class="mb-4">Follow us on social media</p>
+                    <div class="flex justify-center md:justify-start space-x-4">
+                        <a href="#" class="hover:text-gray-300"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="hover:text-gray-300"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="hover:text-gray-300"><i class="fab fa-twitter text-xl"></i></a>
+                    </div>
+                </div>
+
+                <!-- Contact and Policies Section -->
+                <div>
+                    <h2 class="font-semibold text-lg mb-4">Contact</h2>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-gray-300">Contact</a></li>
+                        <li><a href="#" class="hover:text-gray-300">Terms of Use</a></li>
+                        <li><a href="#" class="hover:text-gray-300">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-gray-300">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Website Info Section -->
+                <div>
+                    <h2 class="font-semibold text-lg mb-4">Website Info</h2>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-gray-300">Home</a></li>
+                        <li><a href="#" class="hover:text-gray-300">All Books</a></li>
+                        <li><a href="#" class="hover:text-gray-300">Library</a></li>
+                        <li><a href="#" class="hover:text-gray-300">Clubs</a></li>
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+    </footer>
+
+<script src="clubs.js"></script>
+</body>
+</html>
