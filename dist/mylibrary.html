@@ -1,55 +1,15 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Library</title>
-    <link href="/dist/output.css" rel="stylesheet">
+    <link href="output.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* Style pour le bouton "Set Reading Challenge" */
-        @media (max-width: 768px) {
-           
-            /* Adjusts the book card layout for smaller screens */
-            .book-card {
-                width: 120px;
-                padding: 8px;
-            }
-         /* Smaller stars for mobile */
-    .rating-stars i {
-        font-size: 0.5rem; /* Adjusts the star size for mobile */
-    }
-    /* Adjust review button width on mobile */
-    .review-button {
-        width: auto;
-        padding: 6px 12px;
-    }
-        
-            /* Reduces the padding in book containers to fit on smaller screens */
-            .book-container {
-                gap: 8px;
-                padding: 8px;
-                flex-wrap: nowrap;
-                overflow-x: scroll;
-                -webkit-overflow-scrolling: touch;
-            }
-        
-            /* Ensure carousel buttons are smaller and positioned correctly on mobile */
-            .carousel-button {
-                width: 25px;
-                height: 25px;
-                font-size: 1rem;
-                top: 30%;
-            }
-        }
-        
-        /* Ensures sections like Currently Reading, To Read, and Finished have spacing */
-        .section {
-            margin-bottom: 20px;
-        }
         .challenge-text {
             font-size: 0.85rem;
             color: #1F5132;
@@ -391,16 +351,17 @@ input[type="number"] {
             <p class="text-sm text-gray-500">identifiant@gmail.com</p>
         </div>
         <nav>
+            <h4 class="font-semibold text-gray-800 mb-2">All Books</h4>
             <ul class="space-y-2">
-                <li><a href="index.html" class="text-green-800 hover:text-green-600 flex items-center"><i class="fas fa-book mr-2"></i> Home</a></li>
+                <li><a href="#" class="text-green-800 hover:text-green-600 flex items-center"><i class="fas fa-book mr-2"></i> Home</a></li>
+                <li><a href="#" class="text-green-800 hover:text-green-600 flex items-center"><i class="fas fa-search mr-2"></i> Search</a></li>
                 <li><a href="#" class="text-green-800 hover:text-green-600 flex items-center"><i class="fas fa-bell mr-2"></i> Notifications</a></li>
-                <li><a href="allbooks.html" class="text-green-800 hover:text-green-600 flex items-center"><i class="fas fa-bell mr-2"></i> AllBooks</a></li>
             </ul>
 
-            <a href="mylibrary.html"><h4 class="font-semibold text-gray-800 mt-6 mb-2">MyLibrary</h4></a>
+            <h4 class="font-semibold text-gray-800 mt-6 mb-2">MyLibrary</h4>
             <ul class="space-y-2">
                 <li><a href="#" class="text-green-800 hover:text-green-600 flex items-center"><i class="fas fa-bookmark mr-2"></i> Currently reading</a></li>
-                <li><a href="#" class="text-green-800 hover:text-green-600 flex items-center"><i class="fas fa-list mr-2"></i> To Read</a></li>
+                <li><a href="#" class="text-green-800 hover:text-green-600 flex items-center"><i class="fas fa-list mr-2"></i> On my TBR</a></li>
                 <li><a href="#" class="text-green-800 hover:text-green-600 flex items-center"><i class="fas fa-check mr-2"></i> Finished</a></li>
             </ul>
         </nav>
