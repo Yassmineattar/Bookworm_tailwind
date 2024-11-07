@@ -10,197 +10,87 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-/* General styling */
-@media (max-width: 768px) {
-    .book-card {
-        width: 120px;
-        padding: 8px;
-        text-align: center;
-        align-items: center;
-    }
-
-    /* Smaller stars for mobile */
+        /* Style pour le bouton "Set Reading Challenge" */
+        @media (max-width: 768px) {
+           
+            /* Adjusts the book card layout for smaller screens */
+            .book-card {
+                width: 120px;
+                padding: 8px;
+            }
+         /* Smaller stars for mobile */
     .rating-stars i {
-        font-size: 0.7rem;
+        font-size: 0.5rem; /* Adjusts the star size for mobile */
     }
-
-    /* Carousel button adjustments */
-    .carousel-button {
-        width: 25px;
-        height: 25px;
-        font-size: 1rem;
-        top: 40%;
+    /* Adjust review button width on mobile */
+    .review-button {
+        width: auto;
+        padding: 6px 12px;
     }
-    .challenge-text {
-        font-size: 0.5rem; /* Slightly smaller font for mobile */
-        /* Narrower gap between elements */
-    }
-}
+        
+            /* Reduces the padding in book containers to fit on smaller screens */
+            .book-container {
+                gap: 8px;
+                padding: 8px;
+                flex-wrap: nowrap;
+                overflow-x: scroll;
+                -webkit-overflow-scrolling: touch;
+            }
+        
+            /* Ensure carousel buttons are smaller and positioned correctly on mobile */
+            .carousel-button {
+                width: 25px;
+                height: 25px;
+                font-size: 1rem;
+                top: 30%;
+            }
+        }
+        
+        /* Ensures sections like Currently Reading, To Read, and Finished have spacing */
+        .section {
+            margin-bottom: 20px;
+        }
+        .challenge-text {
+            font-size: 0.85rem;
+            color: #1F5132;
+            background-color: #F0F9F4;
+            padding: 6px 10px;
+            border-radius: 4px;
+            margin-top: 6px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .challenge-button {
+            background-color: transparent;
+            color: #1F5132;
+            border: 1px solid #1F5132;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 3%;
+        }
+        
+        .challenge-button:hover {
+            background-color: #1F5132;
+            color: white;
+            transform: scale(1.02); /* Légère mise en évidence au survol */
+        }
+        
+        .challenge-button i {
+            font-size: 0.9rem;
+        }
+        
+        
 
-/* Carousel container styling */
-.carousel-container {
-    position: relative;
-    max-width: 960px;
-    margin: 0 auto;
-    overflow: hidden;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background: white;
-}
-
-/* Carousel wrapper for sliding effect */
-.carousel-wrapper {
-    display: flex;
-    transition: transform 0.5s ease;
-    width: 100%;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-}
-.challenge-text {
-    background-color: #a6c7b5; /* Light greenish background */
-    color: #1d231f; /* Dark green text color */
-    padding: 6px 10px;
-    border-radius: 4px;
-    
-    font-size: 0.75rem;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-}
-
-/* Each book container (slide) should take up full width of carousel */
-.book-container {
-    display: flex;
-    gap: 16px;
-    padding: 16px;
-    justify-content: space-around;
-    width: 100%;
-    flex-shrink: 0;
-}
-
-/* Book card styling */
-.book-card {
-    width: 150px;
-    padding: 16px;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-/* Cover image adjustments */
-.book-cover {
-    width: 100px;
-    height: 150px;
-    object-fit: cover;
-    margin-bottom: 8px;
-}
-
-/* Book title styling */
-.book-title {
-    font-size: 0.9rem;
-    line-height: 1.2;
-    min-height: 32px;
-    margin-bottom: 8px;
-}
-
-/* Progress bar styling */
-.progress-bar {
-    width: 100%;
-    height: 8px;
-    border-radius: 4px;
-    background-color: #e5e7eb;
-    margin-bottom: 8px;
-}
-
-.progress-fill {
-    height: 100%;
-    background-color: #1F5132;
-    border-radius: 4px;
-}
-
-/* Action button and Review button styling */
-.action-button, .review-button, .challenge-button {
-    background-color: #266940;
-    color: white;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    text-align: center;
-    width: 100%;
-    margin-top: 8px;
-    align-self: stretch; /* Ensures full alignment */
-}
-
-/* Ensures all buttons have consistent size and alignment */
-.challenge-button {
-    margin-top: auto; /* Pushes buttons to the bottom for consistent alignment */
-    width: 100%;
-    padding: 6px 8px;
-    margin-top: 4px;
-}
-
-.review-button {
-    margin-top: auto; /* Pushes buttons to the bottom for consistent alignment */
-    width: 100%;
-    padding: 6px 8px;
-    
-}
-
-/* Carousel button styling */
-.carousel-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(31, 81, 50, 0.8);
-    color: white;
-    border: none;
-    padding: 5px;
-    cursor: pointer;
-    border-radius: 50%;
-    font-size: 1.2rem;
-    width: 35px;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0.8;
-}
-
-.carousel-button.left {
-    left: 10px;
-}
-
-.carousel-button.right {
-    right: 10px;
-}
-
-.carousel-button:hover {
-    background-color: #134E27;
-}
-
-/* Rating stars */
-.rating-stars i {
-    color: #FFD700;
-    font-size: 0.9rem;
-}
-
-/* Badge for completed books */
-.completion-badge {
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    background-color: #1F5132;
-    color: white;
-    padding: 4px 8px;
-    font-size: 0.7rem;
-    border-radius: 4px;
-}
-
-/* Dialog for setting reading challenge */
+/* Style pour la boîte de dialogue */
 .challenge-dialog {
     position: fixed;
     top: 0;
@@ -215,7 +105,7 @@
 }
 
 .dialog-content {
-    background: rgb(255, 255, 255);
+    background: white;
     padding: 20px;
     border-radius: 8px;
     width: 300px;
@@ -272,17 +162,189 @@ input[type="number"] {
     border-radius: 4px;
 }
 
+        
+        .action-button {
+            background-color: #266940;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+        
+        .action-button i {
+            font-size: 1.1rem;
+        }
+        
+        .action-button:hover {
+            background-color: #1F5132;
+        }
+        .progress-percentage {
+            font-size: 0.8rem;
+            color: #333;
+            text-align: center;
+            
+        }
+        .book-card {
+            width: 150px;
+            padding: 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+        }
+        
+        .book-cover {
+            width: 100px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 8px;
+        }
 
+        .book-title {
+            font-size: 0.9rem;
+            text-align: center;
+            margin-bottom: 8px;
+            line-height: 1.2;
+            min-height: 32px;
+        }
 
-section {
-    background: #fffaf0;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    padding: 20px;
-    margin-bottom: 16px;
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background-color: #e5e7eb;
+            margin-bottom: 8px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #1F5132;
+            border-radius: 4px;
+        }
+
+        .action-button {
+            background-color: #266940;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            text-align: center;
+            width: 100%;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 960px;
+            margin: 0 auto;
+            overflow: hidden;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: white;
+        }
+
+        .carousel-wrapper {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%; /* Ajuste la largeur du wrapper */
 }
 
+        
+        .book-container {
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+    justify-content: space-around;
+    width: 100%; /* Chaque slide occupe 100% de la largeur du carousel */
+    flex-shrink: 0;
+        }
+        
+        
+        
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(31, 81, 50, 0.8); /* Couleur de fond légèrement transparente */
+            color: white;
+            border: none;
+            padding: 5px; /* Moins de padding pour un cercle plus petit */
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 1.2rem; /* Taille de flèche réduite */
+            width: 35px; /* Largeur fixe pour un petit cercle */
+            height: 35px; /* Hauteur fixe pour un petit cercle */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            opacity: 0.8;
+        }
+        
+        .carousel-button.left {
+            left: 10px;
+        }
+        
+        .carousel-button.right {
+            right: 10px;
+        }
+        
+        .carousel-button:hover {
+            background-color: #134E27; /* Couleur légèrement plus foncée au survol */
+            
+        }
+        
 
+        .completion-badge {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background-color: #1F5132;
+            color: white;
+            padding: 4px 8px;
+            font-size: 0.7rem;
+            border-radius: 4px;
+        }
+        
+        .rating-stars i {
+            color: #FFD700; /* Gold color for stars */
+            font-size: 0.9rem;
+        }
+        
+        .completion-date {
+            font-size: 0.8rem;
+            color: #555;
+            margin-bottom: 8px;
+        }
+        
+        .review-button {
+            background-color: #266940;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            text-align: center;
+            width: 100%;
+        }
+
+        
+        body {
+            background-color: #ebe0cb; /* Beige doux */
+        }
+        section {
+            background: #fffaf0; /* Beige plus clair pour les sections */
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            padding: 20px;
+            margin-bottom: 16px;
+        }
     </style>
 </head>
 <body class="bg font-sans overflow-x-hidden ">
@@ -329,17 +391,16 @@ section {
             <p class="text-sm text-gray-500">identifiant@gmail.com</p>
         </div>
         <nav>
-            <h4 class="font-semibold text-gray-800 mb-2">All Books</h4>
             <ul class="space-y-2">
-                <li><a href="#" class="text-green-800 hover:text-green-600 flex items-center"><i class="fas fa-book mr-2"></i> Home</a></li>
-                <li><a href="#" class="text-green-800 hover:text-green-600 flex items-center"><i class="fas fa-search mr-2"></i> Search</a></li>
+                <li><a href="index.html" class="text-green-800 hover:text-green-600 flex items-center"><i class="fas fa-book mr-2"></i> Home</a></li>
                 <li><a href="#" class="text-green-800 hover:text-green-600 flex items-center"><i class="fas fa-bell mr-2"></i> Notifications</a></li>
+                <li><a href="allbooks.html" class="text-green-800 hover:text-green-600 flex items-center"><i class="fas fa-bell mr-2"></i> AllBooks</a></li>
             </ul>
 
-            <h4 class="font-semibold text-gray-800 mt-6 mb-2">MyLibrary</h4>
+            <a href="mylibrary.html"><h4 class="font-semibold text-gray-800 mt-6 mb-2">MyLibrary</h4></a>
             <ul class="space-y-2">
                 <li><a href="#" class="text-green-800 hover:text-green-600 flex items-center"><i class="fas fa-bookmark mr-2"></i> Currently reading</a></li>
-                <li><a href="#" class="text-green-800 hover:text-green-600 flex items-center"><i class="fas fa-list mr-2"></i> On my TBR</a></li>
+                <li><a href="#" class="text-green-800 hover:text-green-600 flex items-center"><i class="fas fa-list mr-2"></i> To Read</a></li>
                 <li><a href="#" class="text-green-800 hover:text-green-600 flex items-center"><i class="fas fa-check mr-2"></i> Finished</a></li>
             </ul>
         </nav>
