@@ -145,7 +145,7 @@ function createClubCard(club) {
 
     
     
-// Loop to generate and add each card to the DOM
+
 clubs.forEach(club => {
     const clubCard = createClubCard(club);
     clubList.appendChild(clubCard);
@@ -158,7 +158,7 @@ clubs.forEach(club => {
 document.getElementById("mobile-menu-toggle").addEventListener("click", function() {
     const mobileMenu = document.getElementById("mobile-menu");
     mobileMenu.classList.toggle("hidden");
-    console.log("Hamburger menu toggled"); // Debugging log
+    console.log("Hamburger menu toggled"); 
 });
 
 // Function to handle screen resize
@@ -184,7 +184,6 @@ function handleResize() {
     console.log("Window resized, handleResize called"); // Debugging log
 }
 
-// Initial check when the page loads
 handleResize();
 
 // Event listener for window resize

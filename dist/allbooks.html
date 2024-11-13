@@ -8,7 +8,6 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Custom styles */
         .book-card { display: none; }
     </style>
 </head>
@@ -100,8 +99,6 @@
             <button class="my-library-btn bg text-green-800 border border-green-800 px-3 py-1 text-xs rounded-lg">+ My Library</button>
         </div>
     </div>
-
-    <!-- Répétez cette structure de card pour chaque livre -->
      <!-- Book Card -->
      <div class="book-card bg p-4 rounded-lg shadow-md flex flex-col items-center w-65 hover:shadow-lg transition-shadow text-center">
         <img src="images/change_by_design.png" alt="Book Cover" class="w-40 h-56 mb-4 rounded-lg shadow mx-auto">
@@ -343,14 +340,13 @@
 
         libraryButtons.forEach(button => {
             button.addEventListener("click", function() {
-                // Alterne la classe pour ajouter ou retirer la couleur verte
-                button.classList.toggle("bg-green-500");  // Couleur verte au clic
-                button.classList.toggle("text-white");    // Texte blanc au clic
+                button.classList.toggle("bg-green-500"); 
+                button.classList.toggle("text-white");    
                 
                 if (button.classList.contains("bg-green-500")) {
-                    button.textContent = "- Remove";  // Change le texte au clic
+                    button.textContent = "- Remove";  
                 } else {
-                    button.textContent = "+ My Library";  // Texte par défaut
+                    button.textContent = "+ My Library";  
                 }
             });
         });

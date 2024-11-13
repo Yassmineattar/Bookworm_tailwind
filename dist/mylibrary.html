@@ -87,7 +87,7 @@
         .challenge-button:hover {
             background-color: #1F5132;
             color: white;
-            transform: scale(1.02); /* Légère mise en évidence au survol */
+            transform: scale(1.02); 
         }
         
         .challenge-button i {
@@ -259,7 +259,7 @@ input[type="number"] {
         .carousel-wrapper {
     display: flex;
     transition: transform 0.5s ease;
-    width: 100%; /* Ajuste la largeur du wrapper */
+    width: 100%;
 }
 
         
@@ -278,15 +278,15 @@ input[type="number"] {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: rgba(31, 81, 50, 0.8); /* Couleur de fond légèrement transparente */
+            background-color: rgba(31, 81, 50, 0.8); 
             color: white;
             border: none;
-            padding: 5px; /* Moins de padding pour un cercle plus petit */
+            padding: 5px; 
             cursor: pointer;
             border-radius: 50%;
-            font-size: 1.2rem; /* Taille de flèche réduite */
-            width: 35px; /* Largeur fixe pour un petit cercle */
-            height: 35px; /* Hauteur fixe pour un petit cercle */
+            font-size: 1.2rem; 
+            width: 35px; 
+            height: 35px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -303,7 +303,7 @@ input[type="number"] {
         }
         
         .carousel-button:hover {
-            background-color: #134E27; /* Couleur légèrement plus foncée au survol */
+            background-color: #134E27; 
             
         }
         
@@ -320,7 +320,7 @@ input[type="number"] {
         }
         
         .rating-stars i {
-            color: #FFD700; /* Gold color for stars */
+            color: #FFD700; 
             font-size: 0.9rem;
         }
         
@@ -342,10 +342,10 @@ input[type="number"] {
 
         
         body {
-            background-color: #ebe0cb; /* Beige doux */
+            background-color: #ebe0cb; 
         }
         section {
-            background: #fffaf0; /* Beige plus clair pour les sections */
+            background: #fffaf0; 
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
             padding: 20px;
@@ -645,12 +645,10 @@ input[type="number"] {
         <p class="completion-date">Finished on: Jun 20, 2024</p>
         <button class="review-button">Review</button>
     </div>
-                        
-                        <!-- Ajoutez d'autres livres ici pour remplir le slide -->
+                   
                     </div>
                     <!-- Slide 2 -->
                     <div class="book-container">
-                        <!-- Ajoutez d'autres livres pour le Slide 2 -->
                     </div>
                 </div>
                 <button class="carousel-button right" onclick="slideFinishedCarousel(1)">→</button>
@@ -768,12 +766,10 @@ input[type="number"] {
                 const date = new Date();
                 date.setDate(date.getDate() + parseInt(days));
         
-                // Affiche la date de fin du défi
                 const challengeText = currentChallengeButton.nextElementSibling;
                 challengeText.querySelector(".challenge-date").textContent = date.toDateString();
                 challengeText.style.display = "block";
         
-                // Cache le bouton après avoir défini le défi
                 currentChallengeButton.style.display = "none";
         
                 // Ferme la boîte de dialogue
@@ -798,12 +794,10 @@ input[type="number"] {
             filterMenu.classList.toggle('hidden');
         });
     
-        // Close the menu if clicked outside of it
         document.addEventListener('click', function(event) {
             const filterButton = document.getElementById('filterButton');
             const filterMenu = document.getElementById('filterMenu');
             
-            // Check if the click is outside the filter menu and the button
             if (!filterButton.contains(event.target) && !filterMenu.contains(event.target)) {
                 filterMenu.classList.add('hidden');
             }
