@@ -6,13 +6,13 @@ const slidesData = [
         rating: '★★★★★'
     },
     {
-        imgSrc: 'images/club1.png',
+        imgSrc: 'images/club2.PNG',
         title: 'Adventure Seekers',
         description: 'For those who love thrillers and adventures, this club brings together fans of heart-pounding novels and epic sagas. Join us for an exhilarating reading experience!',
         rating: '★★★★☆'
     },
     {
-        imgSrc: 'images/club1.png',
+        imgSrc: 'images/club3.PNG',
         title: 'History Buffs',
         description: 'A club for history enthusiasts! Each month we dive into different historical periods, bringing the past to life through captivating discussions and shared insights.',
         rating: '★★★★★'
@@ -89,14 +89,14 @@ const clubs = [
         title: "Historical Reads",
         description: "Specializing in historical fiction, this club explores a different era each month. Whether it's Ancient Rome, the Renaissance, or the World Wars.",
         image: "images/club2.jpg",
-        currentlyReading: "images/book1.png",
+        currentlyReading: "images/book2.PNG",
         rating: "★★★★☆"
     },
     {
         title: "Mind Explorers",
         description: "A space for exploring the human mind through insightful psychology books. Each month, members dive into works on behavior, emotions, and mental health.",
         image: "images/club3.jpg",
-        currentlyReading: "images/book1.png",
+        currentlyReading: "images/book3.PNG",
         rating: "★★★★★"
     },
     
